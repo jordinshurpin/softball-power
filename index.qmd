@@ -1,0 +1,70 @@
+---
+title: "Individual Hitters in College Softball"
+author: "Jordin Shurpin"
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+
+library(tidyverse)
+```
+
+## Individual Hitting Performance: Power vs. On-Base Ability
+
+Welcome to our college softball analytics website! Before analyzing team records and divisional differences, we begin with the fundamental building blocks of softball offense: **the individual hitters**.
+
+Below are **2,175 individual NCAA Division I hitters** from the 2022 season (minimum 100 plate appearances). We examine the relationship between on-base ability (OBP) and power (Slugging Percentage, SLG), shaded by total home runs hit.
+
+```{r}
+#| label: hitters-plot
+#| fig-width: 9
+#| fig-height: 6
+#| message: false
+#| warning: false
+
+batting <- read_csv("batting2022.csv")
+
+batting |>
+  filter(PA >= 100) |>
+  ggplot(aes(x = OBP, y = SLG, color = HR)) +
+  geom_point(alpha = 0.65, size = 1.9) +
+  geom_smooth(
+    method = "lm", 
+    se = FALSE, 
+    color = "darkred", 
+    linetype = "dashed", 
+    linewidth = 0.8
+  ) +
+  scale_color_viridis_c(option = "plasma") +
+  scale_x_continuous(labels = scales::number_format(accuracy = 0.01)) +
+  scale_y_continuous(labels = scales::number_format(accuracy = 0.01)) +
+  labs(
+    title = "Batting Power vs. On-Base Ability in NCAA Division I Softball",
+    subtitle = "2,175 individual hitters with at least 100 plate appearances (2022 season)",
+    x = "On-Base Percentage (OBP)",
+    y = "Slugging Percentage (SLG)",
+    color = "Home Runs",
+    caption = "Source: SCORE Sports Data Repository / NCAA Softball"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    legend.position = "right"
+  )
+```
+
+### Key Takeaways from Individual Data
+
+- **Power and on-base skills rise together:** Hitters who get on base at elite rates (.400+ OBP) also tend to slug significantly higher (.600+ SLG).
+- **The impact of the long ball:** Players in the highest home run tier (bright yellow points, 15+ HRs) dominate the upper-right quadrant of offensive production.
+- **From individual hitters to team success:** While individual hitters drive run production, does stacking home run power actually guarantee team victories across different divisions of college softball?
+
+Explore our full findings across the site:
+
+- Check out the **[Story](story.qmd)** tab for a division-by-division analysis (D1, D2, D3, and JUCO) comparing home run rates to game outcomes.
+- Use the **[Exploration](exploration.qmd)** tab to interactively filter teams and examine the data yourself.

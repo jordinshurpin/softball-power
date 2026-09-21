@@ -1,0 +1,29 @@
+---
+title: "About This Project"
+author: "Jordin Shurpin"
+---
+
+## About the Author
+
+Hi! I am Jordin Shurpin, a data science student analyzing offensive metrics in collegiate softball.
+
+## Project Background
+
+This project investigates the relationship between home run hitting power and team winning success across collegiate softball divisions:
+
+- **NCAA Division I**
+- **NCAA Division II**
+- **NCAA Division III**
+- **Junior College (JUCO / NJCAA)**
+
+It builds upon earlier milestones:
+- [Milestone 3](https://jordinshurpin.github.io/milestone-3/) (Team offensive metrics)
+- [Milestone 4](https://jordinshurpin.github.io/milestone-4/) (Individual Division I hitters)
+- [Milestone 5](https://jordinshurpin.github.io/milestone-/) (Collegiate softball divisions analysis)
+
+## Data Sources
+
+- **Individual Hitters:** NCAA Division I hitting statistics compiled via the SCORE sports data repository and NCAA official softball stats (2,175 players with 100+ PA).
+- **Collegiate Divisions:** Team season statistics gathered from NCAA official statistics via `softballR` and NJCAA official softball statistics (1,286 collegiate programs).
+
+This site was created using [Quarto](https://quarto.org/) and R in VS Code.
