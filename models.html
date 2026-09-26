@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jordin Shurpin">
 
-<title>The Story: Home Run Power vs.&nbsp;Game Outcomes – College Softball Analysis</title>
+<title>Statistical Modeling: Quantifying Power – College Softball Analysis</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -129,11 +129,11 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./story.html" aria-current="page"> 
+    <a class="nav-link" href="./story.html"> 
 <span class="menu-text">Team Power</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./models.html"> 
+    <a class="nav-link active" href="./models.html" aria-current="page"> 
 <span class="menu-text">Model &amp; Impact</span></a>
   </li>  
   <li class="nav-item">
@@ -164,15 +164,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#does-home-run-percentage-drive-winning-across-college-softball" id="toc-does-home-run-percentage-drive-winning-across-college-softball" class="nav-link active" data-scroll-target="#does-home-run-percentage-drive-winning-across-college-softball">Does Home Run Percentage Drive Winning Across College Softball?</a></li>
-  <li><a href="#division-by-division-analysis" id="toc-division-by-division-analysis" class="nav-link" data-scroll-target="#division-by-division-analysis">Division-by-Division Analysis</a>
+  <li><a href="#modeling-the-impact-of-home-runs-on-win-percentage" id="toc-modeling-the-impact-of-home-runs-on-win-percentage" class="nav-link active" data-scroll-target="#modeling-the-impact-of-home-runs-on-win-percentage">Modeling the Impact of Home Runs on Win Percentage</a>
   <ul class="collapse">
-  <li><a href="#ncaa-division-i" id="toc-ncaa-division-i" class="nav-link" data-scroll-target="#ncaa-division-i">NCAA Division I</a></li>
-  <li><a href="#ncaa-division-ii" id="toc-ncaa-division-ii" class="nav-link" data-scroll-target="#ncaa-division-ii">NCAA Division II</a></li>
-  <li><a href="#ncaa-division-iii" id="toc-ncaa-division-iii" class="nav-link" data-scroll-target="#ncaa-division-iii">NCAA Division III</a></li>
-  <li><a href="#junior-college-juco-njcaa" id="toc-junior-college-juco-njcaa" class="nav-link" data-scroll-target="#junior-college-juco-njcaa">Junior College (JUCO / NJCAA)</a></li>
+  <li><a href="#division-by-division-model-estimates" id="toc-division-by-division-model-estimates" class="nav-link" data-scroll-target="#division-by-division-model-estimates">Division-by-Division Model Estimates</a></li>
+  <li><a href="#visualizing-the-model-slopes" id="toc-visualizing-the-model-slopes" class="nav-link" data-scroll-target="#visualizing-the-model-slopes">Visualizing the Model Slopes</a></li>
+  <li><a href="#key-takeaways-from-the-model" id="toc-key-takeaways-from-the-model" class="nav-link" data-scroll-target="#key-takeaways-from-the-model">Key Takeaways from the Model</a></li>
   </ul></li>
-  <li><a href="#conclusion-higher-home-run-percentage-decisively-impacts-game-outcomes" id="toc-conclusion-higher-home-run-percentage-decisively-impacts-game-outcomes" class="nav-link" data-scroll-target="#conclusion-higher-home-run-percentage-decisively-impacts-game-outcomes">Conclusion: Higher Home Run Percentage Decisively Impacts Game Outcomes</a></li>
   </ul>
 </nav>
     </div>
@@ -181,7 +178,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The Story: Home Run Power vs.&nbsp;Game Outcomes</h1>
+<h1 class="title">Statistical Modeling: Quantifying Power</h1>
 </div>
 
 
@@ -204,110 +201,87 @@ window.Quarto = {
 </header>
 
 
-<section id="does-home-run-percentage-drive-winning-across-college-softball" class="level2">
-<h2 class="anchored" data-anchor-id="does-home-run-percentage-drive-winning-across-college-softball">Does Home Run Percentage Drive Winning Across College Softball?</h2>
-<p>After analyzing individual hitters on the homepage, our central research question turns to team performance: <strong>Does a higher team home run percentage lead to winning more games, especially when facing teams with lower home run production?</strong></p>
-<p>To answer this, we analyze <strong>1,286 college softball teams</strong> across four divisions: - <strong>NCAA Division I</strong> (295 teams) - <strong>NCAA Division II</strong> (262 teams) - <strong>NCAA Division III</strong> (391 teams) - <strong>Junior College / NJCAA</strong> (338 teams)</p>
+<section id="modeling-the-impact-of-home-runs-on-win-percentage" class="level2">
+<h2 class="anchored" data-anchor-id="modeling-the-impact-of-home-runs-on-win-percentage">Modeling the Impact of Home Runs on Win Percentage</h2>
+<p>While the <strong>Story</strong> tab visually highlights the positive trend between home run frequency and winning, statistical modeling allows us to answer a precise question: <strong>How much does a team’s expected win percentage increase for every 1% increase in home run rate?</strong></p>
+<p>We fit linear regression models across all four collegiate divisions: <span class="math display">\[ \text{Win Percentage} = \beta_0 + \beta_1 \times (\text{HR Rate}) + \epsilon \]</span></p>
+<section id="division-by-division-model-estimates" class="level3">
+<h3 class="anchored" data-anchor-id="division-by-division-model-estimates">Division-by-Division Model Estimates</h3>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 15%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Division</th>
+<th style="text-align: center;">Number of Teams</th>
+<th style="text-align: center;">Baseline Win % (Intercept)</th>
+<th style="text-align: center;">Win % Gain per +1% HR Rate</th>
+<th style="text-align: center;">R² (Variance Explained)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">D3</td>
+<td style="text-align: center;">391</td>
+<td style="text-align: center;">35.1%</td>
+<td style="text-align: center;">11.9%</td>
+<td style="text-align: center;">22.8%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">JUCO</td>
+<td style="text-align: center;">338</td>
+<td style="text-align: center;">21.9%</td>
+<td style="text-align: center;">8.4%</td>
+<td style="text-align: center;">32.3%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">D1</td>
+<td style="text-align: center;">295</td>
+<td style="text-align: center;">33.6%</td>
+<td style="text-align: center;">6.7%</td>
+<td style="text-align: center;">27.0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D2</td>
+<td style="text-align: center;">262</td>
+<td style="text-align: center;">37.2%</td>
+<td style="text-align: center;">5.7%</td>
+<td style="text-align: center;">17.4%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="visualizing-the-model-slopes" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-the-model-slopes">Visualizing the Model Slopes</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="story_files/figure-html/overview-plot-1.png" class="img-fluid figure-img" width="912"></p>
+<p><img src="models_files/figure-html/model-slopes-plot-1.png" class="img-fluid figure-img" width="864"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Across all four levels, there is a clear, positive upward slope: <strong>teams that hit home runs at higher rates consistently win a higher percentage of their games</strong>.</p>
-<hr>
 </section>
-<section id="division-by-division-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="division-by-division-analysis">Division-by-Division Analysis</h2>
-<section id="ncaa-division-i" class="level3">
-<h3 class="anchored" data-anchor-id="ncaa-division-i">NCAA Division I</h3>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="story_files/figure-html/plot-d1-1.png" class="img-fluid figure-img" width="768"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li><strong>Statistical correlation:</strong> <span class="math inline">\(r = 0.52\)</span>, indicating a strong positive relationship.</li>
-<li><strong>Median benchmark:</strong> The median Division I team hit home runs in <strong>1.96%</strong> of their at-bats.</li>
-<li><strong>Impact on game outcomes:</strong> Division I teams in the upper half of home run rate win <strong>55.5%</strong> of their games, compared to just <strong>42.7%</strong> for teams in the lower half — a <strong>12.8 percentage point advantage</strong>.</li>
-<li><strong>Head-to-head dynamic:</strong> When a high-home-run D1 team plays a low-home-run opponent, the power advantage creates immediate multi-run innings against high-velocity pitching, shifting game odds heavily toward the power-hitting squad.</li>
-</ul>
-<hr>
-</section>
-<section id="ncaa-division-ii" class="level3">
-<h3 class="anchored" data-anchor-id="ncaa-division-ii">NCAA Division II</h3>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="story_files/figure-html/plot-d2-1.png" class="img-fluid figure-img" width="768"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li><strong>Statistical correlation:</strong> <span class="math inline">\(r = 0.42\)</span>.</li>
-<li><strong>Median benchmark:</strong> The median Division II team maintains a home run rate of <strong>1.67%</strong>.</li>
-<li><strong>Impact on game outcomes:</strong> Teams above the median win <strong>55.1%</strong> of their games, compared to <strong>42.2%</strong> for below-median teams (<strong>12.9 percentage point advantage</strong>).</li>
-<li><strong>Head-to-head dynamic:</strong> In Division II, teams that maintain a 3.0%+ home run rate almost never finish below a .500 win rate. When facing lower-power teams, their ability to score without relying on stringing 3–4 consecutive singles together provides a reliable winning edge.</li>
-</ul>
-<hr>
-</section>
-<section id="ncaa-division-iii" class="level3">
-<h3 class="anchored" data-anchor-id="ncaa-division-iii">NCAA Division III</h3>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="story_files/figure-html/plot-d3-1.png" class="img-fluid figure-img" width="768"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li><strong>Statistical correlation:</strong> <span class="math inline">\(r = 0.48\)</span> with the steepest regression slope (<span class="math inline">\(\beta = 11.9\)</span>).</li>
-<li><strong>Median benchmark:</strong> The median home run rate in Division III is just <strong>1.00%</strong>, the lowest of any collegiate division.</li>
-<li><strong>Impact on game outcomes:</strong> Teams above the median win <strong>56.2%</strong> of their contests, while teams below the median win only <strong>40.6%</strong> (<strong>15.6 percentage point advantage</strong>).</li>
-<li><strong>Head-to-head dynamic:</strong> Because power is so scarce in Division III, home runs act as a “super-weapon.” A single multi-run home run often decides an entire contest against an opponent that lacks home run capability.</li>
-</ul>
-<hr>
-</section>
-<section id="junior-college-juco-njcaa" class="level3">
-<h3 class="anchored" data-anchor-id="junior-college-juco-njcaa">Junior College (JUCO / NJCAA)</h3>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="story_files/figure-html/plot-juco-1.png" class="img-fluid figure-img" width="768"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li><strong>Statistical correlation:</strong> <span class="math inline">\(r = 0.57\)</span>, the strongest correlation among all divisions.</li>
-<li><strong>Median benchmark:</strong> The median JUCO team posts a <strong>2.39%</strong> home run rate, the highest collegiate median.</li>
-<li><strong>Impact on game outcomes:</strong> Teams above the median win <strong>55.1%</strong> of games, whereas teams below the median win just <strong>32.6%</strong> — a massive <strong>22.5 percentage point chasm</strong>.</li>
-<li><strong>Head-to-head dynamic:</strong> In the offensive-heavy JUCO environment, low-home-run teams struggle immensely to keep up on the scoreboard. When a higher-power team meets a lower-power team, the higher-power team wins nearly two-thirds of the time.</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="conclusion-higher-home-run-percentage-decisively-impacts-game-outcomes" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion-higher-home-run-percentage-decisively-impacts-game-outcomes">Conclusion: Higher Home Run Percentage Decisively Impacts Game Outcomes</h2>
-<p>Across all 1,286 teams in college softball:</p>
+<section id="key-takeaways-from-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="key-takeaways-from-the-model">Key Takeaways from the Model</h3>
 <ol type="1">
-<li><strong>Consistent Advantage:</strong> In every division, teams in the top half of home run percentage win between <strong>12.8 and 22.5 percentage points more games</strong> than teams in the bottom half.</li>
-<li><strong>Game Outcome Differential:</strong> When a high-home-run team plays a low-home-run team, the high-power team holds a substantial probability advantage. Power hitting generates unearned run potential, forces opposing pitchers into stressful counts, and turns deficits into leads with a single swing.</li>
+<li><strong>Consistent Positive Relationship:</strong> In every collegiate division, the slope (<span class="math inline">\(\beta_1\)</span>) is positive and statistically significant (<span class="math inline">\(p &lt; 0.001\)</span>).</li>
+<li><strong>Division III Sensitivity:</strong> Division III teams have the steepest slope (<span class="math inline">\(\approx +11.9\%\)</span> win rate per <span class="math inline">\(1\%\)</span> increase in HR rate), meaning power hitting separates top teams from bottom teams even more dramatically at the D3 level.</li>
+<li><strong>Explaining Season Outcomes:</strong> Home run rate alone accounts for <strong>20% to 32% of the variance</strong> in season win percentage depending on the division, proving that long-ball power is a primary driver of collegiate softball success.</li>
 </ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

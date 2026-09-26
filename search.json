@@ -1,59 +1,17 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Individual Hitters in College Softball",
+    "objectID": "models.html",
+    "href": "models.html",
+    "title": "Statistical Modeling: Quantifying Power",
     "section": "",
-    "text": "Welcome to our college softball analytics website! Before analyzing team records and divisional differences, we begin with the fundamental building blocks of softball offense: the individual hitters.\nBelow are 2,175 individual NCAA Division I hitters from the 2022 season (minimum 100 plate appearances). We examine the relationship between on-base ability (OBP) and power (Slugging Percentage, SLG), shaded by total home runs hit.\n\n\n\n\n\n\n\n\n\n\n\n\nPower and on-base skills rise together: Hitters who get on base at elite rates (.400+ OBP) also tend to slug significantly higher (.600+ SLG).\nThe impact of the long ball: Players in the highest home run tier (bright yellow points, 15+ HRs) dominate the upper-right quadrant of offensive production.\nFrom individual hitters to team success: While individual hitters drive run production, does stacking home run power actually guarantee team victories across different divisions of college softball?\n\nExplore our full findings across the site:\n\nCheck out the Story tab for a division-by-division analysis (D1, D2, D3, and JUCO) comparing home run rates to game outcomes.\nUse the Exploration tab to interactively filter teams and examine the data yourself."
+    "text": "While the Story tab visually highlights the positive trend between home run frequency and winning, statistical modeling allows us to answer a precise question: How much does a team’s expected win percentage increase for every 1% increase in home run rate?\nWe fit linear regression models across all four collegiate divisions: \\[ \\text{Win Percentage} = \\beta_0 + \\beta_1 \\times (\\text{HR Rate}) + \\epsilon \\]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDivision\nNumber of Teams\nBaseline Win % (Intercept)\nWin % Gain per +1% HR Rate\nR² (Variance Explained)\n\n\n\n\nD3\n391\n35.1%\n11.9%\n22.8%\n\n\nJUCO\n338\n21.9%\n8.4%\n32.3%\n\n\nD1\n295\n33.6%\n6.7%\n27.0%\n\n\nD2\n262\n37.2%\n5.7%\n17.4%\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConsistent Positive Relationship: In every collegiate division, the slope (\\(\\beta_1\\)) is positive and statistically significant (\\(p &lt; 0.001\\)).\nDivision III Sensitivity: Division III teams have the steepest slope (\\(\\approx +11.9\\%\\) win rate per \\(1\\%\\) increase in HR rate), meaning power hitting separates top teams from bottom teams even more dramatically at the D3 level.\nExplaining Season Outcomes: Home run rate alone accounts for 20% to 32% of the variance in season win percentage depending on the division, proving that long-ball power is a primary driver of collegiate softball success."
   },
   {
-    "objectID": "index.html#individual-hitting-performance-power-vs.-on-base-ability",
-    "href": "index.html#individual-hitting-performance-power-vs.-on-base-ability",
-    "title": "Individual Hitters in College Softball",
+    "objectID": "models.html#modeling-the-impact-of-home-runs-on-win-percentage",
+    "href": "models.html#modeling-the-impact-of-home-runs-on-win-percentage",
+    "title": "Statistical Modeling: Quantifying Power",
     "section": "",
-    "text": "Welcome to our college softball analytics website! Before analyzing team records and divisional differences, we begin with the fundamental building blocks of softball offense: the individual hitters.\nBelow are 2,175 individual NCAA Division I hitters from the 2022 season (minimum 100 plate appearances). We examine the relationship between on-base ability (OBP) and power (Slugging Percentage, SLG), shaded by total home runs hit.\n\n\n\n\n\n\n\n\n\n\n\n\nPower and on-base skills rise together: Hitters who get on base at elite rates (.400+ OBP) also tend to slug significantly higher (.600+ SLG).\nThe impact of the long ball: Players in the highest home run tier (bright yellow points, 15+ HRs) dominate the upper-right quadrant of offensive production.\nFrom individual hitters to team success: While individual hitters drive run production, does stacking home run power actually guarantee team victories across different divisions of college softball?\n\nExplore our full findings across the site:\n\nCheck out the Story tab for a division-by-division analysis (D1, D2, D3, and JUCO) comparing home run rates to game outcomes.\nUse the Exploration tab to interactively filter teams and examine the data yourself."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About This Project",
-    "section": "",
-    "text": "Hi! I am Jordin Shurpin, a data science student analyzing offensive metrics in collegiate softball."
-  },
-  {
-    "objectID": "about.html#about-the-author",
-    "href": "about.html#about-the-author",
-    "title": "About This Project",
-    "section": "",
-    "text": "Hi! I am Jordin Shurpin, a data science student analyzing offensive metrics in collegiate softball."
-  },
-  {
-    "objectID": "about.html#project-background",
-    "href": "about.html#project-background",
-    "title": "About This Project",
-    "section": "Project Background",
-    "text": "Project Background\nThis project investigates the relationship between home run hitting power and team winning success across collegiate softball divisions:\n\nNCAA Division I\nNCAA Division II\nNCAA Division III\nJunior College (JUCO / NJCAA)\n\nIt builds upon earlier milestones: - Milestone 3 (Team offensive metrics) - Milestone 4 (Individual Division I hitters) - Milestone 5 (Collegiate softball divisions analysis)"
-  },
-  {
-    "objectID": "about.html#data-sources",
-    "href": "about.html#data-sources",
-    "title": "About This Project",
-    "section": "Data Sources",
-    "text": "Data Sources\n\nIndividual Hitters: NCAA Division I hitting statistics compiled via the SCORE sports data repository and NCAA official softball stats (2,175 players with 100+ PA).\nCollegiate Divisions: Team season statistics gathered from NCAA official statistics via softballR and NJCAA official softball statistics (1,286 collegiate programs).\n\nThis site was created using Quarto and R in VS Code."
-  },
-  {
-    "objectID": "exploration.html",
-    "href": "exploration.html",
-    "title": "Interactive Data Exploration",
-    "section": "",
-    "text": "Welcome to the Exploration page! Here, you can interact directly with the collegiate softball data.\n\nIn the interactive chart below: Hover over any point to see the team’s name, division, home runs, and win rate. Click divisions in the legend on the right to toggle them on or off, or double-click one to view it exclusively.\nIn the interactive table further down: Search for your favorite school, sort by any column, and filter across divisions.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFilter by division, search for any team, or click any column header to sort."
-  },
-  {
-    "objectID": "exploration.html#explore-the-data-control-what-you-see",
-    "href": "exploration.html#explore-the-data-control-what-you-see",
-    "title": "Interactive Data Exploration",
-    "section": "",
-    "text": "Welcome to the Exploration page! Here, you can interact directly with the collegiate softball data.\n\nIn the interactive chart below: Hover over any point to see the team’s name, division, home runs, and win rate. Click divisions in the legend on the right to toggle them on or off, or double-click one to view it exclusively.\nIn the interactive table further down: Search for your favorite school, sort by any column, and filter across divisions.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFilter by division, search for any team, or click any column header to sort."
+    "text": "While the Story tab visually highlights the positive trend between home run frequency and winning, statistical modeling allows us to answer a precise question: How much does a team’s expected win percentage increase for every 1% increase in home run rate?\nWe fit linear regression models across all four collegiate divisions: \\[ \\text{Win Percentage} = \\beta_0 + \\beta_1 \\times (\\text{HR Rate}) + \\epsilon \\]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDivision\nNumber of Teams\nBaseline Win % (Intercept)\nWin % Gain per +1% HR Rate\nR² (Variance Explained)\n\n\n\n\nD3\n391\n35.1%\n11.9%\n22.8%\n\n\nJUCO\n338\n21.9%\n8.4%\n32.3%\n\n\nD1\n295\n33.6%\n6.7%\n27.0%\n\n\nD2\n262\n37.2%\n5.7%\n17.4%\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConsistent Positive Relationship: In every collegiate division, the slope (\\(\\beta_1\\)) is positive and statistically significant (\\(p &lt; 0.001\\)).\nDivision III Sensitivity: Division III teams have the steepest slope (\\(\\approx +11.9\\%\\) win rate per \\(1\\%\\) increase in HR rate), meaning power hitting separates top teams from bottom teams even more dramatically at the D3 level.\nExplaining Season Outcomes: Home run rate alone accounts for 20% to 32% of the variance in season win percentage depending on the division, proving that long-ball power is a primary driver of collegiate softball success."
   },
   {
     "objectID": "story.html",
@@ -82,5 +40,75 @@
     "title": "The Story: Home Run Power vs. Game Outcomes",
     "section": "Conclusion: Higher Home Run Percentage Decisively Impacts Game Outcomes",
     "text": "Conclusion: Higher Home Run Percentage Decisively Impacts Game Outcomes\nAcross all 1,286 teams in college softball:\n\nConsistent Advantage: In every division, teams in the top half of home run percentage win between 12.8 and 22.5 percentage points more games than teams in the bottom half.\nGame Outcome Differential: When a high-home-run team plays a low-home-run team, the high-power team holds a substantial probability advantage. Power hitting generates unearned run potential, forces opposing pitchers into stressful counts, and turns deficits into leads with a single swing."
+  },
+  {
+    "objectID": "hitters.html",
+    "href": "hitters.html",
+    "title": "Interactive Hitter Explorer",
+    "section": "",
+    "text": "Use this interactive page to search, filter, and inspect 2,175 individual NCAA Division I hitters from the 2022 season (qualified with at least 100 plate appearances).\n\n\nHover over any point to view the player’s name, school, home runs, and slash line (BA / OBP / SLG). You can also zoom into clusters of hitters or isolate specific home run tiers.\n\n\n\n\n\n\n\n\n\nSearch for specific athletes or universities, sort columns by clicking headers, and page through the complete Division I dataset."
+  },
+  {
+    "objectID": "hitters.html#explore-division-i-hitters",
+    "href": "hitters.html#explore-division-i-hitters",
+    "title": "Interactive Hitter Explorer",
+    "section": "",
+    "text": "Use this interactive page to search, filter, and inspect 2,175 individual NCAA Division I hitters from the 2022 season (qualified with at least 100 plate appearances).\n\n\nHover over any point to view the player’s name, school, home runs, and slash line (BA / OBP / SLG). You can also zoom into clusters of hitters or isolate specific home run tiers.\n\n\n\n\n\n\n\n\n\nSearch for specific athletes or universities, sort columns by clicking headers, and page through the complete Division I dataset."
+  },
+  {
+    "objectID": "exploration.html",
+    "href": "exploration.html",
+    "title": "Interactive Data Exploration",
+    "section": "",
+    "text": "Welcome to the Exploration page! Here, you can interact directly with the collegiate softball data.\n\nIn the interactive chart below: Hover over any point to see the team’s name, division, home runs, and win rate. Click divisions in the legend on the right to toggle them on or off, or double-click one to view it exclusively.\nIn the interactive table further down: Search for your favorite school, sort by any column, and filter across divisions.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFilter by division, search for any team, or click any column header to sort."
+  },
+  {
+    "objectID": "exploration.html#explore-the-data-control-what-you-see",
+    "href": "exploration.html#explore-the-data-control-what-you-see",
+    "title": "Interactive Data Exploration",
+    "section": "",
+    "text": "Welcome to the Exploration page! Here, you can interact directly with the collegiate softball data.\n\nIn the interactive chart below: Hover over any point to see the team’s name, division, home runs, and win rate. Click divisions in the legend on the right to toggle them on or off, or double-click one to view it exclusively.\nIn the interactive table further down: Search for your favorite school, sort by any column, and filter across divisions.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFilter by division, search for any team, or click any column header to sort."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About This Project",
+    "section": "",
+    "text": "Hi! I am Jordin Shurpin, a student at New College of Florida studying data science and analyzing offensive metrics in collegiate softball.\n\nEmail: J.shurpin30@ncf.edu\nGitHub: github.com/jordinshurpin\nProject Repository: github.com/jordinshurpin/softball-power"
+  },
+  {
+    "objectID": "about.html#about-the-author",
+    "href": "about.html#about-the-author",
+    "title": "About This Project",
+    "section": "",
+    "text": "Hi! I am Jordin Shurpin, a student at New College of Florida studying data science and analyzing offensive metrics in collegiate softball.\n\nEmail: J.shurpin30@ncf.edu\nGitHub: github.com/jordinshurpin\nProject Repository: github.com/jordinshurpin/softball-power"
+  },
+  {
+    "objectID": "about.html#about-the-project",
+    "href": "about.html#about-the-project",
+    "title": "About This Project",
+    "section": "About the Project",
+    "text": "About the Project\nThis project investigates the relationship between home run hitting power and team winning success across collegiate softball divisions:\n\nNCAA Division I\nNCAA Division II\nNCAA Division III\nJunior College (JUCO / NJCAA)\n\nIt builds upon earlier milestones: - Milestone 3 (Team offensive metrics) - Milestone 4 (Individual Division I hitters) - Milestone 5 (Collegiate softball divisions analysis)"
+  },
+  {
+    "objectID": "about.html#data-sources",
+    "href": "about.html#data-sources",
+    "title": "About This Project",
+    "section": "Data Sources",
+    "text": "Data Sources\n\nIndividual Hitters: NCAA Division I hitting statistics compiled via the SCORE sports data repository and NCAA official softball stats (2,175 players with 100+ PA).\nCollegiate Divisions: Team season statistics gathered from NCAA official statistics via softballR and NJCAA official softball statistics (1,286 collegiate programs).\n\nThis site was created using Quarto and R in VS Code."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Individual Hitters in College Softball",
+    "section": "",
+    "text": "Welcome to our college softball analytics website! Before analyzing team records and divisional differences, we begin with the fundamental building blocks of softball offense: the individual hitters.\nBelow are 2,175 individual NCAA Division I hitters from the 2022 season (minimum 100 plate appearances). We examine the relationship between on-base ability (OBP) and power (Slugging Percentage, SLG), shaded by total home runs hit.\n\n\n\n\n\n\n\n\n\n\n\n\nPower and on-base skills rise together: Hitters who get on base at elite rates (.400+ OBP) also tend to slug significantly higher (.600+ SLG).\nThe impact of the long ball: Players in the highest home run tier (bright yellow points, 15+ HRs) dominate the upper-right quadrant of offensive production.\nFrom individual hitters to team success: While individual hitters drive run production, does stacking home run power actually guarantee team victories across different divisions of college softball?\n\nExplore our full findings across the site:\n\nCheck out the Story tab for a division-by-division analysis (D1, D2, D3, and JUCO) comparing home run rates to game outcomes.\nUse the Exploration tab to interactively filter teams and examine the data yourself."
+  },
+  {
+    "objectID": "index.html#individual-hitting-performance-power-vs.-on-base-ability",
+    "href": "index.html#individual-hitting-performance-power-vs.-on-base-ability",
+    "title": "Individual Hitters in College Softball",
+    "section": "",
+    "text": "Welcome to our college softball analytics website! Before analyzing team records and divisional differences, we begin with the fundamental building blocks of softball offense: the individual hitters.\nBelow are 2,175 individual NCAA Division I hitters from the 2022 season (minimum 100 plate appearances). We examine the relationship between on-base ability (OBP) and power (Slugging Percentage, SLG), shaded by total home runs hit.\n\n\n\n\n\n\n\n\n\n\n\n\nPower and on-base skills rise together: Hitters who get on base at elite rates (.400+ OBP) also tend to slug significantly higher (.600+ SLG).\nThe impact of the long ball: Players in the highest home run tier (bright yellow points, 15+ HRs) dominate the upper-right quadrant of offensive production.\nFrom individual hitters to team success: While individual hitters drive run production, does stacking home run power actually guarantee team victories across different divisions of college softball?\n\nExplore our full findings across the site:\n\nCheck out the Story tab for a division-by-division analysis (D1, D2, D3, and JUCO) comparing home run rates to game outcomes.\nUse the Exploration tab to interactively filter teams and examine the data yourself."
   }
 ]
