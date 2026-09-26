@@ -9,7 +9,7 @@ Hi! I am **Jordin Shurpin**, a student at [New College of Florida](https://www.n
 
 - **Email:** [J.shurpin30@ncf.edu](mailto:J.shurpin30@ncf.edu)
 - **GitHub:** [github.com/jordinshurpin](https://github.com/jordinshurpin)
-- **Project Repository:** [github.com/jordinshurpin/softball](https://github.com/jordinshurpin/softball)
+- **Project Repository:** [github.com/jordinshurpin/softball-power](https://github.com/jordinshurpin/softball-power)
 
 ## About the Project
 
