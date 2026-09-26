@@ -6,11 +6,15 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: "Home (Hitters)"
+        text: "Home"
       - href: story.qmd
-        text: "Story"
+        text: "Team Power"
+      - href: models.qmd
+        text: "Model & Impact"
       - href: exploration.qmd
-        text: "Exploration"
+        text: "Explore Teams"
+      - href: hitters.qmd
+        text: "Explore Hitters"
       - href: about.qmd
         text: "About"
 

@@ -1,0 +1,86 @@
+---
+title: "Interactive Hitter Explorer"
+author: "Jordin Shurpin"
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+
+library(tidyverse)
+library(plotly)
+library(DT)
+
+batting <- read_csv("batting2022.csv") |>
+  filter(PA >= 100)
+```
+
+## Explore Division I Hitters
+
+Use this interactive page to search, filter, and inspect **2,175 individual NCAA Division I hitters** from the 2022 season (qualified with at least 100 plate appearances).
+
+### Interactive Power vs. On-Base Scatter
+
+Hover over any point to view the player's name, school, home runs, and slash line (BA / OBP / SLG). You can also zoom into clusters of hitters or isolate specific home run tiers.
+
+```{r}
+#| label: interactive-hitters-plot
+#| fig-height: 6
+
+p_hitters <- ggplot(
+  batting, 
+  aes(
+    x = OBP, 
+    y = SLG, 
+    color = HR,
+    text = paste0(
+      "<b>", Player, "</b> (", Team, ")<br>",
+      "Slash: ", scales::number(BA, accuracy = 0.001), " / ",
+      scales::number(OBP, accuracy = 0.001), " / ",
+      scales::number(SLG, accuracy = 0.001), "<br>",
+      "OPS: ", scales::number(OPS, accuracy = 0.001), "<br>",
+      "HR: ", HR, " | RBI: ", RBI, "<br>",
+      "PA: ", PA, " (AB: ", AB, ")"
+    )
+  )
+) +
+  geom_point(alpha = 0.7, size = 1.8) +
+  scale_color_viridis_c(option = "plasma") +
+  scale_x_continuous(labels = scales::number_format(accuracy = 0.01)) +
+  scale_y_continuous(labels = scales::number_format(accuracy = 0.01)) +
+  labs(
+    x = "On-Base Percentage (OBP)",
+    y = "Slugging Percentage (SLG)",
+    color = "Home Runs"
+  ) +
+  theme_minimal(base_size = 12)
+
+ggplotly(p_hitters, tooltip = "text")
+```
+
+### Searchable Hitter Database
+
+Search for specific athletes or universities, sort columns by clicking headers, and page through the complete Division I dataset.
+
+```{r}
+#| label: interactive-hitters-table
+
+batting |>
+  select(Player, Team, GP, PA, AB, HR, RBI, BA, OBP, SLG, OPS) |>
+  arrange(desc(HR)) |>
+  datatable(
+    filter = "top",
+    options = list(
+      pageLength = 10,
+      autoWidth = TRUE,
+      dom = "Bfrtip"
+    ),
+    rownames = FALSE,
+    colnames = c("Player", "Team", "GP", "PA", "AB", "HR", "RBI", "AVG", "OBP", "SLG", "OPS")
+  ) |>
+  formatRound(columns = c("BA", "OBP", "SLG", "OPS"), digits = 3)
+```

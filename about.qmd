@@ -5,9 +5,13 @@ author: "Jordin Shurpin"
 
 ## About the Author
 
-Hi! I am Jordin Shurpin, a data science student analyzing offensive metrics in collegiate softball.
+Hi! I am **Jordin Shurpin**, a student at [New College of Florida](https://www.ncf.edu) studying data science and analyzing offensive metrics in collegiate softball.
 
-## Project Background
+- **Email:** [J.shurpin30@ncf.edu](mailto:J.shurpin30@ncf.edu)
+- **GitHub:** [github.com/jordinshurpin](https://github.com/jordinshurpin)
+- **Project Repository:** [github.com/jordinshurpin/softball](https://github.com/jordinshurpin/softball)
+
+## About the Project
 
 This project investigates the relationship between home run hitting power and team winning success across collegiate softball divisions:
 
